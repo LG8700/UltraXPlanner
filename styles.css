@@ -1,0 +1,273 @@
+:root {
+  color-scheme: dark;
+  --bg: #050505;
+  --panel: #0c0c0c;
+  --text: #f1f1f1;
+  --muted: #9c9c9c;
+  --accent: #21e6ff;
+  --accent-2: #7dff5f;
+  --border: #2e2e2e;
+  font-family: "Courier New", "Lucida Console", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  padding: 32px 48px 64px;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 8px 0 0;
+  letter-spacing: 1px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.status-badge {
+  border: 2px solid var(--accent-2);
+  padding: 8px 16px;
+  color: var(--accent-2);
+  font-weight: bold;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.status-line {
+  border: 1px solid var(--accent-2);
+  color: var(--accent-2);
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.field span {
+  color: var(--muted);
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="time"],
+input[type="file"] {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+input[type="file"] {
+  padding: 8px 12px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  border: 1px solid var(--text);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.manual-elevation {
+  border: 1px dashed var(--border);
+  padding: 16px;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.manual-elevation.active {
+  display: flex;
+}
+
+.manual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action {
+  background: var(--accent-2);
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.action.ghost {
+  background: transparent;
+  color: var(--accent-2);
+  border: 1px solid var(--accent-2);
+}
+
+.table {
+  display: grid;
+  gap: 12px;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 0.6fr;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table-header {
+  color: var(--muted);
+}
+
+.table-row {
+  font-size: 14px;
+  text-transform: none;
+}
+
+.station-eta {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.legs-output {
+  border: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 80px;
+}
+
+.leg-card {
+  border: 1px solid var(--text);
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.leg-card span {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.leg-card strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .table-header,
+  .table-row,
+  .leg-card {
+    grid-template-columns: 1fr;
+  }
+}

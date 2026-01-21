@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UltraXPlanner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">ULTRA MARATHON PLANNING CONSOLE</p>
+      <h1>UltraXPlanner</h1>
+    </div>
+    <div class="status-badge">SYSTEM READY</div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <header>
+        <h2>Course input</h2>
+        <p>Load a GPX track to compute distance and elevation stats.</p>
+      </header>
+
+      <div class="status-line" id="gpxStatus">Ready to import a GPX file.</div>
+
+      <label class="field">
+        <span>GPX File</span>
+        <input type="file" id="gpxFile" accept=".gpx" />
+      </label>
+
+      <div class="stats">
+        <div class="stat-card">
+          <span>Total distance</span>
+          <strong id="totalDistance">0.0 km</strong>
+        </div>
+        <div class="stat-card">
+          <span>Total gain / loss</span>
+          <strong id="totalGainLoss">0 m / 0 m</strong>
+        </div>
+      </div>
+
+      <div class="manual-elevation" id="manualElevation">
+        <h3>Elevation override</h3>
+        <p>GPX file has no elevation data. Enter totals to model leg difficulty.</p>
+        <div class="manual-grid">
+          <label class="field compact">
+            <span>Total gain (m)</span>
+            <input type="number" id="manualGain" min="0" value="0" />
+          </label>
+          <label class="field compact">
+            <span>Total loss (m)</span>
+            <input type="number" id="manualLoss" min="0" value="0" />
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <header>
+        <h2>Target finish</h2>
+        <p>Set race start and goal finish time.</p>
+      </header>
+
+      <div class="grid">
+        <label class="field">
+          <span>Start time</span>
+          <input type="time" id="startTime" value="06:00" />
+        </label>
+        <label class="field">
+          <span>Hours</span>
+          <input type="number" id="targetHours" min="0" value="10" />
+        </label>
+        <label class="field">
+          <span>Minutes</span>
+          <input type="number" id="targetMinutes" min="0" max="59" value="0" />
+        </label>
+      </div>
+
+      <p class="hint">Log actual arrivals to recompute remaining pace and ETAs.</p>
+    </section>
+
+    <section class="panel full-width">
+      <header class="row">
+        <div>
+          <h2>Aid stations</h2>
+          <p>Add stations to define legs. Distances are from start (km).</p>
+        </div>
+        <button class="action" id="addStation">Add station</button>
+      </header>
+
+      <div class="table" id="stationsTable">
+        <div class="table-header">
+          <span>Station</span>
+          <span>Distance (km)</span>
+          <span>Rest (min)</span>
+          <span>Expected arrival</span>
+          <span>Actual arrival</span>
+          <span>Actions</span>
+        </div>
+        <div class="table-row" data-row>
+          <input type="text" placeholder="Aid station name" class="station-name" />
+          <input type="number" placeholder="Distance (km)" class="station-distance" min="0" step="0.1" />
+          <input type="number" placeholder="Rest (min)" class="station-rest" min="0" step="1" />
+          <div class="station-eta">--:--</div>
+          <input type="time" class="station-actual" />
+          <button class="action ghost remove">Remove</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel full-width">
+      <header>
+        <h2>Leg targets</h2>
+        <p>Leg pace adjusts for elevation. Actual arrivals recalibrate remaining legs.</p>
+      </header>
+      <div id="legsOutput" class="legs-output">Add aid stations and GPX data to see leg targets.</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
